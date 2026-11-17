@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0B1120">
-<title>TECHWATCH — Veille IaC & DevSecOps</title>
+<title>TECHWATCH — Sécuriser l'Infrastructure as Code</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
@@ -114,19 +114,51 @@ footer{color:var(--muted);font-size:12.5px;border-top:1px solid var(--line);padd
 <header>
   <div class="wrap">
     <div class="brand"><span class="logo">TECH<b>WATCH</b></span><span class="slogan">Understand the tech. Stay ahead.</span></div>
-    <h1>Infrastructure as Code et DevSecOps : automatiser sans automatiser les failles</h1>
+    <h1>Sécuriser l'Infrastructure as Code : automatiser les déploiements sans automatiser les failles</h1>
+    <p style="margin:6px 0 0;color:#CBD5E1;font-size:15px">Veille technologique BTS SIO SISR · Terraform, Ansible et contrôles de sécurité DevSecOps (Checkov) · vue d'un administrateur systèmes et réseaux</p>
     <div class="meta">Veille initiale · 01/11/2025 → 17/11/2026 · dernière vérification le 17/11/2026 · Jason Mballa Abessolo — BTS SIO SISR</div>
   </div>
 </header>
 <nav class="tabs" aria-label="Sections">
   <div class="wrap">
-    <a href="#menaces" data-view="menaces">Menaces</a>
+    <a href="#contexte" data-view="contexte">Pourquoi ce sujet</a>
+    <a href="#menaces" data-view="menaces">Fil de veille</a>
     <a href="#synthese" data-view="synthese">Synthèse</a>
     <a href="#methode" data-view="methode">Méthode</a>
   </div>
 </nav>
 
 <main class="wrap">
+  <section id="v-contexte" hidden>
+    <div class="sec-title">Pourquoi cette veille ?</div>
+    <div class="legend">
+      <div><b>Le sujet en une phrase</b>Les administrateurs ne configurent plus les serveurs à la main : ils écrivent du code (Terraform, Ansible) qui les crée et les configure. C'est plus rapide et reproductible, mais une erreur ou un composant piégé dans ce code est copié sur toutes les machines en même temps. Ma veille cherche comment garder les avantages de l'automatisation sans en multiplier les risques.</div>
+      <div><b>Dans quel contexte j'ai choisi ce thème</b>Ma première veille portait sur les cybermenaces visant les PME françaises. Elle couvrait trop de sujets pour être approfondie. Je l'ai recentrée sur un thème précis de la liste proposée par l'école : l'Infrastructure as Code et le DevSecOps. Je l'ai choisi parce que c'est le thème qui revenait le plus dans ma première veille (attaques de la chaîne d'approvisionnement, fuites de secrets, outils de sécurité compromis) et surtout parce que je le pratique déjà en alternance.</div>
+    </div>
+
+    <div class="sec-title">Le lien avec mon travail</div>
+    <div class="legend">
+      <div><b>Ce que je fais en alternance</b>Je suis administrateur systèmes et réseaux en alternance. J'ai monté un laboratoire d'infrastructure pour l'IA en entreprise : serveur Proxmox, réseau segmenté, pare-feu, annuaire. J'y automatise la création des machines virtuelles et des comptes utilisateurs avec Ansible, avec des mots de passe gérés dans un coffre-fort (HashiCorp Vault) et un dépôt Git comme référence de la configuration.</div>
+      <div><b>Le problème que j'ai rencontré</b>En automatisant, je me suis rendu compte qu'un seul playbook mal écrit, un secret laissé dans un fichier ou un module téléchargé sans vérification pouvaient toucher toutes les machines du lab en une exécution. C'est exactement la question de ma veille : « comment automatiser sans automatiser les failles ? ».</div>
+      <div><b>Ce que la veille change concrètement pour moi</b>Épingler les versions des outils et des modules, ne jamais mettre de secret dans le code, analyser automatiquement le code avant de le déployer (Checkov, gitleaks, ansible-lint), donner le moins de droits possible aux comptes d'automatisation. J'applique ces règles dans mon lab de veille (Terraform sur Azure + Ansible + Checkov dans GitHub Actions), puis dans mon travail.</div>
+    </div>
+
+    <div class="sec-title">Ma perspective d'évolution</div>
+    <div class="legend">
+      <div><b>Poursuite d'études</b>Après le BTS, je vise une licence Administration et Sécurité des Systèmes et des Réseaux (ASSR). Ce sujet est à la jonction des deux : l'administration (automatiser) et la sécurité (ne pas automatiser les failles).</div>
+      <div><b>Évolution du métier</b>Le métier d'administrateur systèmes et réseaux évolue vers le cloud, l'automatisation et le DevOps. Savoir écrire et sécuriser du code d'infrastructure est aujourd'hui attendu pour des postes d'administrateur cloud, d'ingénieur DevOps ou DevSecOps.</div>
+      <div><b>Projet professionnel</b>À terme, je veux proposer des services d'infogérance à des TPE et PME. Gérer plusieurs clients n'est possible qu'avec de l'automatisation, et une erreur s'y répliquerait chez tous les clients : cette veille me prépare directement à ce risque.</div>
+    </div>
+
+    <div class="sec-title">Les questions que suit ma veille</div>
+    <div class="legend">
+      <div><b>1. Quelles failles touchent les outils eux-mêmes ?</b>Terraform, OpenTofu, Ansible, leurs modules et les outils de sécurité du pipeline.</div>
+      <div><b>2. Comment les attaquants exploitent-ils les pipelines d'automatisation ?</b>Actions GitHub piégées, vol de secrets, attaques de la chaîne d'approvisionnement.</div>
+      <div><b>3. Quelles bonnes pratiques et quels outils apparaissent pour s'en protéger ?</b>Analyse du code, épinglage, identifiants temporaires, recommandations des éditeurs et de l'ANSSI.</div>
+      <div><b>4. Qu'est-ce que j'applique dans mon lab et dans mon travail ?</b>Chaque fiche se termine par une recommandation concrète.</div>
+    </div>
+  </section>
+
   <section id="v-menaces">
     <div class="kpis" id="kpis"></div>
     <div class="sec-title">À traiter en priorité <small>incidents confirmés et priorités hautes</small></div>
@@ -265,7 +297,7 @@ document.getElementById("urgent").addEventListener("click", e => { const b = e.t
 document.getElementById("synth").innerHTML = D.synth.map(s => `<div class="sblock"><h3>${esc(s.t)}</h3><p>${esc(s.b)}</p></div>`).join("");
 
 // Routing
-function route(){ const v = (location.hash||"#menaces").slice(1); const ok = ["menaces","synthese","methode"].includes(v) ? v : "menaces";
+function route(){ const v = (location.hash||"#contexte").slice(1); const ok = ["contexte","menaces","synthese","methode"].includes(v) ? v : "contexte";
   document.querySelectorAll("main>section").forEach(s => s.hidden = s.id !== "v-"+ok);
   document.querySelectorAll("nav.tabs a").forEach(a => { if (a.dataset.view===ok) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current"); }); }
 window.addEventListener("hashchange", route); route();
